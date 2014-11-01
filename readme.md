@@ -17,20 +17,17 @@ Please point out any errors or ways it could be improved.
 ```bash
 # if you dont have docker
 curl -sSL https://get.docker.com/ | sh
-
 #if you have docker
 
 sudo su -c 'echo "load-module module-native-protocol-tcp">>/etc/pulse/default.pa'
-
 sudo service pulseaudio restart
-git clone https://github.com/ezmac/docker-chrome-pepper-pulseaudio.git .
 
-docker build --rm -t google-chrome .
+docker pull ezmac/google-chrome
 docker run -ti --rm \
-       -e DISPLAY=$DISPLAY \
+       -e DISPLAY=$DISPLAY\
        -v /tmp/.X11-unix:/tmp/.X11-unix \
        -v /home/$USER/.pulse-cookie:/home/chrome/.pulse-cookie:rw\
-       google-chrome --no-sandbox
+       ezmac/google-chrome --no-sandbox
 ```
 
 ## thanks to / references
